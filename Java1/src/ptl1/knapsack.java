@@ -26,11 +26,11 @@ public class knapsack {
             weightList.add(rng.nextInt(1, 29));
         }
         for (int i = 0; i < amount; i++) {
-            if (backpackWeight + weightList.get(i) >= capacity) break;
             if (backpackWeight + weightList.get(i) <= capacity && (valueList.get(i) > 0)) {
                 backpackWeight += weightList.get(i);
                 backpackValue += valueList.get(i);
             }
+            if(backpackWeight == capacity) break;
         }
     }
 
@@ -38,7 +38,7 @@ public class knapsack {
     public String toString(){
         String stringReturn = "";
         for(int i=0; i< amount; i++ ){
-            stringReturn += i + "." + "\tWeight: " + weightList.get(i) + "\tValue: " + valueList.get(i) + "\n" ;
+            stringReturn += i + 1 + "." + "\tWeight: " + weightList.get(i) + "\tValue: " + valueList.get(i) + "\n" ;
         }
         stringReturn += "Knapsack value: " + backpackValue + "\n";
         stringReturn += "Knapsack weight: " + backpackWeight + "\n";
